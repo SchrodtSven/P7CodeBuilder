@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="src/P7CodeBuilder/Autoload.php" colors="true" verbose="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory>./</directory>
+    </include>
+    <exclude>
+      <directory>./src/public</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="Testing P7CodeBuilder stuff">
+      <directory>./test/</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
