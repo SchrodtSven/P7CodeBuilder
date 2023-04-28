@@ -48,4 +48,8 @@ class Symbol
     public const OPEN_BRACE = '{';
 
     public const CLOSE_BRACE = '}';
+
+    public const OPEN_TYPO_DOUBLE_QUOTE = '“';
+
+    public const CLOSE_TYPO_DOUBLE_QUOTE = '”';
 }

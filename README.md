@@ -3,6 +3,22 @@ Library for dynamic creation of source code (files, parts, projects) in several 
 P7CodeBuilder requires PHP 8.2+
 
 
+## Design & Architecture
+
+### Types 
+
+Usge of _scalar_ native PHP types (<code>int</code>, <code>float</code>, <code>bool, </code>, <code>string</code>) and _compound_ types like lists (array *indexed per <code>int</code>*) or hash maps
+(*array keyed per <code>string</code>*) are wrapped by classes in the sub namespace <code>P7CodeBuilder\Type</code> named <code>{$Type}Class</code > -> like <code>\stdClass</code>.
+
+Within method signatures native scalar types are used to guarantee short hand usage.
+
+Every <code>{$Type}Class</code > has a method <code>getContent()</code> to retrieve current content as native PHP type.
+
+### Dont repeat yourself - DRY 
+
+To avoid redundancy sub namespaces have a <code>Dry</code> part containing _traits_ used within several classes.
+
+
 
 ## Appendix
 
