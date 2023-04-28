@@ -67,10 +67,39 @@ class StringClassTest extends TestCase
        $this->assertSame($myParts, $parts);
     }
 
+    /**
+     * @dataProvider replaceProvider
+     */
+    public function testReplace(string $original, string $find, string $replace, string $new): void
+    {
+        $actual = (new StringClass($original))->replace($find, $replace);
+        $this->assertSame((string) $actual, $new);
+    }
+
+    /**
+     * @dataProvider substringProvider
+     */
+    public function testSubString(string $original, string $sub, int $offset, int $length): void
+    {
+        $actual = (new StringClass($original))->subString($offset, $length);
+        $this->assertSame((string) $actual, $sub);
+    }
+
     public function splitProvider(): array
     {
         return (new PersonalData())->getDataForSplitting();
     }
+
+    public function replaceProvider(): array
+    {
+        return (new PersonalData())->getDataForReplacing();
+    }
+
+    public function substringProvider(): array
+    {
+        return (new PersonalData())->getDataForSubstringing();
+    }
+
 
     public function nameProvider(): array
     {

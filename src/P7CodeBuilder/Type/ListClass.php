@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 /**
- * Class for instances representing array(s) as object 
+ * Class for instances representing array(s) as object(s)
  * 
  * - OOP API for array operations
+ * -  creating data containers from file contents incl. parsing
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/P7CodeBuilder
@@ -23,22 +24,45 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
     use ArrayAccessTrait;   
     use IteratorTrait;
 
+    /**
+     * Constructor function 
+     */
     public function __construct(private array $content = [])
     {
 
     }
 
+    /**
+     * Getting current content as native PHP array
+     * 
+     * @return array
+     */
     public function getContent(): array
     {
         return $this->content;
     }
 
+    /**
+     * Alias for self::getContent()
+     * 
+     * @return array
+     */
     public function getAsArray(): array
     {
         return $this->content;
     }
 
 
+    /**
+     * Creating new instance by reading content of $filename splitting each line to
+     * an element of internal content array -> trimming data by default
+     * 
+     * @param string filename
+     * @param bool autoTrim
+     * @return self
+     * 
+     * @FIXME --> trimAll() exists!
+     */
     public static function createFromFile(string $filename, bool $autoTrim = true): self
     {
         if(!\file_exists($filename)) {
@@ -53,6 +77,11 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
         return $tmp;
     }
 
+    /**
+     * Trimming all elements
+     * 
+     * @return self
+     */
     public function trimAll(): self
     {
         $this->walk(function(&$item) {
@@ -61,20 +90,42 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
         return $this;
     }
 
-    public function quoteAll(): self
+    /**
+     * Quoting each element with quote sign $mark
+     * 
+     * @param string $mark
+     * @return self
+     */
+    public function quoteAll(string $mark ="'"): self
     {
         $this->walk(function(&$item) {
-            $item = (string) (new StringClass($item))->quote();
+            $item = (string) (new StringClass((string) $item))->quote($mark);
         });
         return $this;
     }
 
 
-    public function quoteByType()
+    /** 
+     * Quoting if is_string || stringable
+     * 
+     * @FIXME!!!!
+     * @return self 
+     */
+    public function quoteByType(): self
     {
-        // @todo implement me!!!
+        $this->walk(function(&$item) {
+            if(!is_numeric($item))
+                $item = (string) (new StringClass((string) $item))->quote();
+        });
+        return $this;
     }
 
+    /**
+     * Creating instance from JSON file
+     * 
+     * @param string $filenname
+     * @return self
+     */
     public static function createFromJsonFile(string $filename): self
     {
         if(!\file_exists($filename)) {
@@ -83,16 +134,33 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
         return new self(\json_decode(\file_get_contents($filename), true));
     }
 
+    /**
+     * Getting current amount of elements - implementing interface \Iterable
+     * 
+     * @return int 
+     */
     public function count(): int 
     {
         return count($this->content);
     }
 
+    /**
+     * Imploding every element of current state glued with $glue to instance of StringClass
+     * 
+     * @param string $glue
+     * @return StringClass     
+     * */
     public function join(string $glue = ' '): StringClass
     {
         return new StringClass((string) \implode($glue, $this->content));
     }
-    
+
+    /**
+     * Adding $value to current array content as newest|last element 
+     * 
+     * @param mixed $value
+     * @return self
+     */
     public function push(mixed $value): self
     {
         array_push($this->content, $value);
@@ -100,16 +168,32 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
     }
 
 
+    /**
+     * Popping last element from current array content and retuning it
+     * 
+     * @return mixed 
+     */
     public function pop(): mixed
     {
         return array_pop($this->content);
     }
 
+    /**
+     * Shifting first element from current array content and returning it
+     * 
+     * @return mixed 
+     */
     public function shift(): mixed
     {
         return array_shift($this->content);
     }
 
+    /**
+     * Adding $value to current array content as first element
+     * 
+     * @param mixed $value
+     * @return self
+     */
     public function unshift(mixed $value): self
     {
         array_unshift($this->content, $value);
@@ -118,12 +202,24 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
 
 
 
+    /**
+     * Applying callback on every element
+     * 
+     * @param callable $callback 
+     * @return self
+     */
     public function walk(callable $callback): self
     {
         array_walk($this->content, $callback);
         return $this;
     }
 
+    /**
+     * Getting $num (existing) key(s) from current content
+     * 
+     * @param int $num
+     * @return self
+     */
     public function getRandomKey(int $num = 1): self
     {
         $r =  new \Random\Randomizer();
@@ -133,7 +229,12 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
     }
 
 
-
+    /**
+     *  Getting random $num (existing) element(s) from current content
+     *  
+     * @param int $num
+     * @reeturn self
+     */   
     public function getRandomElement(int $num = 1): self
     {
             $tmp =  new self();
@@ -149,12 +250,15 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
             }
     }
 
+    /**
+     * Getting instance of ListFilter with current content for filtering 
+     * by array key named $subject
+     * 
+     * @param string $subject
+     * @return ListFilter
+     */
     public function filterBy(string $subject): ListFilter
     {
         return new ListFilter($this, $subject);
     }
-
-    
-    
-
 }

@@ -67,7 +67,7 @@ class StringClass implements \Stringable
     /**
      * Replacing all ocurrences of string $search with $replace within current content 
      * 
-     * Hint: *str_replace* _itself_ is /utf-8 ready/, thats why *mb_str_replace* does NOT exist.
+     * Hint: <code>str_replace</code> _itself_ is /utf-8 ready/, thats why *mb_str_replace* does NOT exist.
      *  
      * @param string $search
      * @param string $replace
