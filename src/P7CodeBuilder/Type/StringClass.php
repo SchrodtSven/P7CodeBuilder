@@ -62,6 +62,12 @@ class StringClass
         return $this;
     }
 
+    public function trim(): self
+    {
+        $this->content = trim($this->content);
+        return $this;
+    }
+
 
     public function prepend(string $string): self
     {
@@ -92,6 +98,18 @@ class StringClass
         );
     }
 
+    public function toUpper(): self
+    {
+        $this->content = \strtoupper($this->content);
+        return $this;
+    }
+
+    public function toLower(): self
+    {
+        $this->content = \strtolower($this->content);
+        return $this;
+    }
+
     public function ends(string $end): bool
     {
         return \str_ends_with($this->content, $end);
@@ -106,7 +124,7 @@ class StringClass
     {
         return \str_contains($this->content, $needle);
     }
-    
+
     public function __toString(): string
     {
         return $this->content;

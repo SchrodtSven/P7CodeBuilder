@@ -23,7 +23,7 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
     use ArrayAccessTrait;   
     use IteratorTrait;
 
-    public function __construct(private array $content)
+    public function __construct(private array $content = [])
     {
 
     }
@@ -39,12 +39,40 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
     }
 
 
-    public static function createFromFile(string $filename): self
+    public static function createFromFile(string $filename, bool $autoTrim = true): self
     {
         if(!\file_exists($filename)) {
             throw new FileError($filename, 404);
         }
-        return new self(file($filename));
+        $tmp = new self(file($filename));
+        if($autoTrim) {
+            $tmp->walk(function(&$item) {
+                $item = trim($item);
+            });
+        }
+        return $tmp;
+    }
+
+    public function trimAll(): self
+    {
+        $this->walk(function(&$item) {
+            $item = trim($item);
+        });
+        return $this;
+    }
+
+    public function quoteAll(): self
+    {
+        $this->walk(function(&$item) {
+            $item = (string) (new StringClass($item))->quote();
+        });
+        return $this;
+    }
+
+
+    public function quoteByType()
+    {
+        // @todo implement me!!!
     }
 
     public static function createFromJsonFile(string $filename): self

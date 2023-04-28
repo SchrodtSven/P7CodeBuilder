@@ -19,6 +19,14 @@ use P7CodeBuilder\Type\ListClass;
 class StringClassTest extends TestCase
 
 {
+    private StringClass $stringInstance;
+    private ListClass $listInstance;
+
+    public function setUpNotNow(): void
+    {
+        $this->stringInstance = new StringClass('');
+        $this->listInstance = new ListClass([]);
+    }
 
     /**
      * @dataProvider nameProvider
@@ -26,12 +34,9 @@ class StringClassTest extends TestCase
     public function testBasix(string $text, string $start, string $end, string $cont): void
     {
         $s = new StringClass($text);
-
         $this->assertTrue($s->begins($start));
         $this->assertTrue($s->ends($end));
         $this->assertTrue($s->contains($cont));
-        
-
     }
     
 
