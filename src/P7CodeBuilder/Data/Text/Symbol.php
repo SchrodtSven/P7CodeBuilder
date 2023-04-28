@@ -52,4 +52,10 @@ class Symbol
     public const OPEN_TYPO_DOUBLE_QUOTE = '“';
 
     public const CLOSE_TYPO_DOUBLE_QUOTE = '”';
+
+    public const OPEN_TYPO_SINGLE_QUOTE = "‘";
+
+    public const CLOSE_TYPO_SINGLE_QUOTE = "’";
+    
+
 }
