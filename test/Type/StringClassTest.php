@@ -14,7 +14,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use P7CodeBuilder\Type\StringClass;
 use P7CodeBuilder\Type\ListClass;
-
+use P7CodeBuilder\Data\Text\Mocking\PersonalData;
 
 class StringClassTest extends TestCase
 
@@ -37,8 +37,40 @@ class StringClassTest extends TestCase
         $this->assertTrue($s->begins($start));
         $this->assertTrue($s->ends($end));
         $this->assertTrue($s->contains($cont));
+        $this->assertSame((string) $s->prepend('FOO'), "FOO{$text}");
+        $s = new StringClass($text);
+        $this->assertSame((string) $s->append('FOO'), "{$text}FOO");
+        $s = new StringClass($text);
+        $this->assertSame((string) $s->append('FOO')->prepend('BAR'), "BAR{$text}FOO");
     }
-    
+
+    /**
+     * @dataProvider nameProvider
+     */
+    public function testEmbracing(string $text, string $start, string $end, string $cont): void
+    {
+        $s = new StringClass($text);
+
+        $this->assertSame((string) $s->embrace(), "({$text})");
+        $s = new StringClass($text);
+        $this->assertSame((string) $s->embrace(StringClass::EMBRACE_MODE_CROTCHET), "[{$text}]");
+        $s = new StringClass($text);
+        $this->assertSame((string) $s->embrace(StringClass::EMBRACE_MODE_BRACE), "{{$text}}");
+    }
+
+    /**
+     * @dataProvider splitProvider
+     */
+    public function testSplitBy(string $text, array $parts): void
+    {
+        $myParts = (new StringClass($text))->splitBy(' ')->getContent();
+       $this->assertSame($myParts, $parts);
+    }
+
+    public function splitProvider(): array
+    {
+        return (new PersonalData())->getDataForSplitting();
+    }
 
     public function nameProvider(): array
     {

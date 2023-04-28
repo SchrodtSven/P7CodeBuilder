@@ -17,9 +17,16 @@ declare(strict_types=1);
  * @since 2023-04-23
  */
 namespace P7CodeBuilder\Type;
+use P7CodeBuilder\Type\ListClass;
+use P7CodeBuilder\Data\Text\Symbol;
 
 class StringClass
 {
+
+    public const EMBRACE_MODE_PARENTHESIS = 1;
+    public const EMBRACE_MODE_CROTCHET = 2;
+    public const EMBRACE_MODE_BRACE = 4;
+
     public function __construct(private string $content)
     {
 
@@ -84,6 +91,27 @@ class StringClass
     public function quote(string $quoteMark="'"): self
     {
         return $this->prepend($quoteMark)->append($quoteMark);
+    }
+
+    public function embrace($mode = self::EMBRACE_MODE_PARENTHESIS): self
+    {
+        switch($mode) {
+
+            case self::EMBRACE_MODE_BRACE:
+                $start = Symbol::OPEN_BRACE;
+                $end = Symbol::CLOSE_BRACE;
+                break;
+            case self::EMBRACE_MODE_CROTCHET:
+                $start = Symbol::OPEN_CROTCHET;
+                $end = Symbol::CLOSE_CROTCHET;
+                break;
+            default: 
+                $start = Symbol::OPEN_PARENTHESIS;
+                $end = Symbol::CLOSE_PARENTHESIS;
+                break;
+        }
+
+        return $this->append($end)->prepend($start);   
     }
 
     public function length(): int
