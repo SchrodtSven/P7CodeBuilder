@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 /**
- * Class for instances representing string(s) as object 
+ * Defining constants for text filtering - used within P7CodeBuilder\Type{*}Filter classes
  * 
  * - OOP API for string manipulations
- * 
- * 
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/P7CodeBuilder
@@ -16,7 +14,7 @@ declare(strict_types=1);
  */
 namespace P7CodeBuilder\Type\Operational;
 
-class ListFilterMode
+class FilterMode
 {
     public const TEXT_FILTER_EQ = 0; // equals
     public const TEXT_FILTER_NE = 1; // not equals

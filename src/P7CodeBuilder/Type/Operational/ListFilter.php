@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 /**
- * Class for filtering operations on instaces of ListClass | HashMap that 
- * have (keyed; assoc.,) arrays as elements
+ * Class for filtering operations on instances of ListClass | HashMap that 
+ * have (keyed; associative; hash map) arrays as elements
  * 
  * - OOP API for array operations
  * 
@@ -45,21 +45,28 @@ class ListFilter
         return $this;
     }
 
-    public function genericTextFilter(string $value, int $mode = ListFilterMode::TEXT_FILTER_EQ): self
+    /**
+      * Generic function for basic text filtering 
+      *
+      * @param string $value
+      * @param int $mode
+      * @return self
+      */
+    public function genericTextFilter(string $value, int $mode = FilterMode::TEXT_FILTER_EQ): self
     {
         $subject = $this->subject;
         $this->filtered = new ListClass(array_filter( 
             $this->content->getAsArray(), 
             function($item) use($subject, $value, $mode): bool {
                   return match($mode) {
-                    ListFilterMode::TEXT_FILTER_EQ => ($item[$subject] === $value),
-                    ListFilterMode::TEXT_FILTER_NE => ($item[$subject] !== $value),
-                    ListFilterMode::TEXT_FILTER_STARTS => str_starts_with($item[$subject], $value),
-                    ListFilterMode::TEXT_FILTER_NOT_STARTS => !str_starts_with($item[$subject], $value),
-                    ListFilterMode::TEXT_FILTER_ENDS => str_ends_with($item[$subject], $value),
-                    ListFilterMode::TEXT_FILTER_NOT_ENDS => !str_ends_with($item[$subject], $value),
-                    ListFilterMode::TEXT_FILTER_CONT => str_contains($item[$subject], $value),
-                    ListFilterMode::TEXT_FILTER_NOT_CONT => !str_contains($item[$subject], $value),
+                    FilterMode::TEXT_FILTER_EQ => ($item[$subject] === $value),
+                    FilterMode::TEXT_FILTER_NE => ($item[$subject] !== $value),
+                    FilterMode::TEXT_FILTER_STARTS => str_starts_with($item[$subject], $value),
+                    FilterMode::TEXT_FILTER_NOT_STARTS => !str_starts_with($item[$subject], $value),
+                    FilterMode::TEXT_FILTER_ENDS => str_ends_with($item[$subject], $value),
+                    FilterMode::TEXT_FILTER_NOT_ENDS => !str_ends_with($item[$subject], $value),
+                    FilterMode::TEXT_FILTER_CONT => str_contains($item[$subject], $value),
+                    FilterMode::TEXT_FILTER_NOT_CONT => !str_contains($item[$subject], $value),
                   };
              }
         ));

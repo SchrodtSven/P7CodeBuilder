@@ -19,7 +19,6 @@ class Words
 {
 
     // list of regular english verbs
-    // we know how to deal with it, or EDd?
     private array $regularVerbs = [
         'accept',
         'add',
