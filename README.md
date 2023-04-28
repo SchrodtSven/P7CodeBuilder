@@ -7,7 +7,7 @@ P7CodeBuilder requires PHP 8.2+
 
 ### Types 
 
-Usge of _scalar_ native PHP types (<code>int</code>, <code>float</code>, <code>bool, </code>, <code>string</code>) and _compound_ types like lists (array *indexed per <code>int</code>*) or hash maps
+Usage of _scalar_ native PHP types (<code>int</code>, <code>float</code>, <code>bool, </code>, <code>string</code>) and _compound_ types like lists (array *indexed per <code>int</code>*) or hash maps
 (*array keyed per <code>string</code>*) are wrapped by classes in the sub namespace <code>P7CodeBuilder\Type</code> named <code>{$Type}Class</code > -> like <code>\stdClass</code>.
 
 <code>P7CodeBuilder\Type\ListClass</code> and <code>P7CodeBuilder\Type\HashpMap</code> implement 
