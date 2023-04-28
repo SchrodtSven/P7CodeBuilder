@@ -3,3 +3,4 @@ tmp_stuff
 .DS_Store
 .phpunit.result.cache
 README_BAK.md
+src/P7CodeBuilder/Language/Html/Tmp

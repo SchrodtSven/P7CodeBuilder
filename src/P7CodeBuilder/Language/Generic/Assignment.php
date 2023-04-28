@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Class for instances representing string(s) as object 
+ * Class for instances representing assignments
  * 
  * - OOP API for string manipulations
  * 
@@ -36,6 +36,11 @@ class Assignment
 
     }
 
+    /**
+     * “Magical interceptor” function implementing \Stringable interface return textual representation of current state
+     * 
+     * @return string
+     */
     public function __toString(): string
     {
         return sprintf('%s %s %s', $this->left, $this->operator, $this->right);

@@ -264,7 +264,7 @@ class StringClass implements \Stringable
     }
 
     /**
-     * “Magical interceptor” function implementing \Stringable interface
+     * “Magical interceptor” function implementing \Stringable interface return textual representation of current state
      * 
      * @return string
      */

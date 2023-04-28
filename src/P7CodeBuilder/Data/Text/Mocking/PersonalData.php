@@ -1,4 +1,14 @@
-<?php
+<?php 
+
+declare(strict_types=1);
+/**
+ * Offering mock data for personal information
+ * 
+ * @link https://github.com/SchrodtSven/P7CodeBuilder
+ * @author Sven Schrodt<sven@schrodt.club>
+ * @package P7CodeBuilder
+ * @version 0.1
+ */
 
 namespace P7CodeBuilder\Data\Text\Mocking;
 
