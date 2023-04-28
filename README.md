@@ -10,10 +10,10 @@ P7CodeBuilder requires PHP 8.2+
 Usge of _scalar_ native PHP types (<code>int</code>, <code>float</code>, <code>bool, </code>, <code>string</code>) and _compound_ types like lists (array *indexed per <code>int</code>*) or hash maps
 (*array keyed per <code>string</code>*) are wrapped by classes in the sub namespace <code>P7CodeBuilder\Type</code> named <code>{$Type}Class</code > -> like <code>\stdClass</code>.
 
-<code>P7CodeBuilder\Type\ListClass</code> and <code>P7CodeBuilder\Type\HaspMap</code> implement 
-    - <code>\ArrayAccess</code> interface allowing accessing properties via <code>[int] | ['string']</code>
-    - <code>\Iterator</code> interface allowing iteration via <code>foreach</code>
-    - <code>\Countable</code> interface allowing usage of <code>count</code>
+<code>P7CodeBuilder\Type\ListClass</code> and <code>P7CodeBuilder\Type\HashpMap</code> implement 
+- <code>\ArrayAccess</code> interface allowing accessing properties via <code>[int] | ['string']</code>
+- <code>\Iterator</code> interface allowing iteration via <code>foreach</code>
+- <code>\Countable</code> interface allowing usage of <code>count</code>
 
 Within method signatures native scalar types are used to guarantee short hand usage.
 
