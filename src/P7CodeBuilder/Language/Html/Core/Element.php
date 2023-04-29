@@ -78,7 +78,7 @@ class Element
 
 
     /**
-     * (Re-)Setting _all_ attributes of current element
+     * (Re-) Setting _all_ attributes of current element
      * 
      * @param array $attributes
      * @return self
@@ -93,7 +93,7 @@ class Element
     }
 
     /**
-     * (Re-)Setting attribute $name of current element to $value 
+     * (Re-) Setting attribute $name of current element to $value 
      * 
      * @param string $name
      * @param string $value

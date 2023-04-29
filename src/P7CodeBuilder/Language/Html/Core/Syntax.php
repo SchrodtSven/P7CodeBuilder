@@ -4,6 +4,8 @@ declare(strict_types=1);
 /**
  * Defining current and valid HTML syntax parts - deprecated elements / attributtes are ignored for now
  * 
+ * 
+ * @FIXME - separate non empty & empty elements
  * @link https://github.com/SchrodtSven/P7CodeBuilder
  * @author Sven Schrodt<sven@schrodt.club>
  * @package P7CodeBuilder

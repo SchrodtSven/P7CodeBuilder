@@ -23,6 +23,11 @@ Every <code>{$Type}Class</code > has a method <code>getContent()</code> to retri
 
 To avoid redundancy sub namespaces have a <code>Dry</code> part containing _traits_ used within several classes.
 
+### Sub namespaces
+
+#### Language\Html
+
+- This classes are using \DOMDocument, \DOMElement, \DOMText and \DOMNode internally
 
 
 ## Appendix
