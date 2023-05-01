@@ -16,9 +16,16 @@ use P7CodeBuilder\Language\Dry\Entity\DocBlockLine;
 $parser = new SimpleParser();
 
 $lines = [
-    new DocBlockLine('author', 'Schrodt'),
-    new DocBlockLine('since', '2023-05-29'),
-    new DocBlockLine('param', 'string $foo')
+    new DocBlockLine('Cool features coded highly sophisticated'),
+    new DocBlockLine(''),
+    new DocBlockLine('Long description'),
+    new DocBlockLine(''),
+    new DocBlockLine('ELF', 'FIXME!!!!'),
+    new DocBlockLine(''),
+    new DocBlockLine('Sven Schrodt<sven@schrodt.club>', 'author'),
+    new DocBlockLine('2023-05-29', 'since'),
+    new DocBlockLine('string $foo', 'param'),
+    new DocBlockLine('int $bar', 'param')
 ];
 
 
