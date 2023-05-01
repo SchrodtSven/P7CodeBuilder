@@ -36,7 +36,7 @@ $parser->RET = '23';
 $parser->RTYPE = 'int';
 
 $parser->FUNCNAME = 'doItForMe';
-$parser->CODE = 'do Nothing()';
+$parser->CODE = 'doNothing();';
 $parser->LINES = implode(PHP_EOL, $lines);
 $parser->SIG = 'string $foo';
 $parser->VISI = 'public';

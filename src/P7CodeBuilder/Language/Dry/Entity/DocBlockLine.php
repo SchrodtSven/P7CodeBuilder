@@ -15,7 +15,7 @@ use P7CodeBuilder\Type\StringClass;
 
 class DocBlockLine
 {
-    private string $lineTpl = ('   * @{{TAG}} {{CONTENT}}');
+    private string $lineTpl = DocBlockConfig::LINE_TPL;
     private StringClass $parsed;
 
     public function __construct(string $content, string $tag = '')

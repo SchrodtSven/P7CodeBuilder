@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 /**
- * Class for instances representing associative array(s) (hash map) as object 
+ * Class for instances representing associative arrays (hash maps) as object 
  * 
- * - OOP API for array operations
+ * - OOP API for hash map operations
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/P7CodeBuilder
