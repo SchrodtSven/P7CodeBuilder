@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace P7CodeBuilder\Type\Operational;
 use P7CodeBuilder\Type\ListClass;
+use P7CodeBuilder\Type\Meta\FilterMode;
 
 class ListFilter
 {

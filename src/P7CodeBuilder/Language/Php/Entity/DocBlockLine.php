@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @version 0.1
  */
 
-namespace P7CodeBuilder\Language\Dry\Entity;
+namespace P7CodeBuilder\Language\Php\Entity;
 use P7CodeBuilder\Type\StringClass;
 
 class DocBlockLine

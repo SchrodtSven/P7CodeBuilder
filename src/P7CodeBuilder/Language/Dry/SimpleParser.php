@@ -30,10 +30,17 @@ class SimpleParser
 
     public function __construct(private string $tplName = 'src/P7CodeBuilder/Language/Dry/Tpl/FunctionDocBlock.tpl')
     {
-        $this->find = new ListClass(['  ']);
-        $this->replace = new ListClass([' ']);
+        $this->reset();
     }
 
+    /**
+     * “Magical interceptor” invoked when writing data to inaccessible (protected or private) 
+     * or non-existing property $name with $value
+     * 
+     * 
+     * @param string $name
+     * @param mixed $value
+     */
     public function __set(string $name, mixed $value): void
     {
         $this->find->push((
@@ -56,5 +63,9 @@ class SimpleParser
                 );
     }
 
-
+    public function reset():void
+    {
+        $this->find = new ListClass(['  ']);
+        $this->replace = new ListClass([' ']);
+    }
 }

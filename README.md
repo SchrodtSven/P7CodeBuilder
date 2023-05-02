@@ -16,6 +16,7 @@ Usage of _scalar_ native PHP types (<code>int</code>, <code>float</code>, <code>
 - <code>\Countable</code> interface allowing usage of <code>count</code>
 
 Within method signatures native scalar types are used to guarantee short hand usage.
+In closures or other non public accessible code PHP native functions are used.
 
 Every <code>{$Type}Class</code > has a method <code>getContent()</code> to retrieve current content as native PHP type.
 

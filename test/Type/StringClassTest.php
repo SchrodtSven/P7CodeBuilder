@@ -85,6 +85,21 @@ class StringClassTest extends TestCase
         $this->assertSame((string) $actual, $sub);
     }
 
+    /**
+     * @dataProvider camelizeProvider
+     */
+    public function testCamelizing(string $original, string $separator, bool $upperFirst, string $cased): void
+    {
+        $this->assertSame((string) (new StringClass($original))->camelize($upperFirst, $separator), $cased);
+    }
+
+    
+
+    public function camelizeProvider(): array
+    {
+        return (new PersonalData())->getDataForCamelizing();
+    }
+
     public function splitProvider(): array
     {
         return (new PersonalData())->getDataForSplitting();

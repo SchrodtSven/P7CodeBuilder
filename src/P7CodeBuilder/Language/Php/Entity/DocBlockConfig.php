@@ -15,7 +15,7 @@ declare(strict_types=1);
  * @version 0.1
  */
 
-namespace P7CodeBuilder\Language\Dry\Entity;
+namespace P7CodeBuilder\Language\PhP\Entity;
 
 class DocBlockConfig
 {

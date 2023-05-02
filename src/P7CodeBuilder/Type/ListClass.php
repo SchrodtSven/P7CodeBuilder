@@ -98,7 +98,7 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
      */
     public function quoteAll(string $mark ="'"): self
     {
-        $this->walk(function(&$item) {
+        $this->walk(function(&$item) use($mark) {
             $item = (string) (new StringClass((string) $item))->quote($mark);
         });
         return $this;
@@ -250,6 +250,12 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
             }
     }
 
+    public function sort(): self
+    {
+        \natsort($this->content);
+        return $this;
+    }
+    
     /**
      * Getting instance of ListFilter with current content for filtering 
      * by array key named $subject

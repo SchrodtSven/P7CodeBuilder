@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @version 0.1
  * @since 2023-04-23
  */
-namespace P7CodeBuilder\Type\Operational;
+namespace P7CodeBuilder\Type\Meta;
 
 class FilterMode
 {

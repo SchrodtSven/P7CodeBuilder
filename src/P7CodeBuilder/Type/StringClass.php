@@ -108,6 +108,11 @@ class StringClass implements \Stringable
         return $this;
     }
 
+    public function wrapWords(int $width = 120, string $break = \PHP_EOL, bool $cutLongWords = false): self
+    {
+        $this->content = wordwrap($this->content, $width, $break, $cutLongWords);
+        return $this;
+    }
 
     /**
      * Prepending $string to current content
@@ -273,5 +278,32 @@ class StringClass implements \Stringable
     public function __toString(): string
     {
         return $this->content;
+    }
+
+    /**
+     * Transforming current content to camelCasedFunction 
+     * (or CamelCasedClassName, if $upperFirst === true),
+     * splitting it by $separator and adjusting case
+     * 
+     * @param bool $upperFirst
+     * @param String $separator
+     * @return string
+     */
+    public function camelize(bool $upperFirst = false, string $separator = Symbol::SINGLE_UNDERSCORE): self
+    {
+        $tmp = (new StringClass($this->content))->splitBy($separator);
+        if(!$upperFirst) {
+            $s =strtolower($tmp->shift($tmp));
+        }
+
+        $tmp->walk(function(&$item) {
+            $item = \ucfirst(strtolower($item));
+        });
+
+        $this->content = (string) $tmp->join('');
+        if(!$upperFirst) {
+            $this->prepend($s);
+        }
+        return $this;
     }
 }

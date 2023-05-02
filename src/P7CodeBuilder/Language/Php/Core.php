@@ -31,7 +31,7 @@ class Core
     public const COMPARE_OP_NOT_EQUAL = ' != ';
 
     // $a <> $b Not equal true if $a is not equal to $b after type juggling.
-    public const COMPARE_OP_NOT_EQUAL = ' <> ';
+    public const COMPARE_OP_NOT_EQUAL_VARIANT = ' <> ';
 
     // $a !== $b Not identical true if $a is not equal to $b, or they are not of the same type.
     public const COMPARE_OP_NOT_IDENTICAL = ' !== ';
@@ -143,6 +143,12 @@ class Core
     // $a ??= $b $a = $a ?? $b Null Coalesce
     public const ASSIGN_OP_NULL_COALESCE = ' ??= ';
 
+    // Constants for visibilies
 
+    public const VISI_PUB = 'public';
+
+    public const VISI_PROT = 'protected';
+
+    public const VISI_PRIV = 'private';
 
 }

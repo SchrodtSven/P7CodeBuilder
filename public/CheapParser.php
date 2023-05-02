@@ -1,6 +1,6 @@
 <?php
 /**
- * @deprecated
+ * quick & dirty parser for testing to be @deprecated l8er
  */
 
 
@@ -45,9 +45,9 @@ class CheapParser
         );
     }
 
-    public function camelize(string $str): string
+    public function camelize(string $str, string $splitBy= '_'): string
     {
-        $tmp = explode('_', $str);
+        $tmp = explode($splitBy, $str);
 
         $s = array_shift($tmp);
         foreach ($tmp as &$value) {
