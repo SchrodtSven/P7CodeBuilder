@@ -3,12 +3,14 @@ Library for dynamic creation of source code (files, parts, projects) in several 
 P7CodeBuilder requires PHP 8.2+
 
 
-## Design & Architecture
+## Philosophy, Design & Architecture
+
+We *always do* use native functions/classes etc. if possible.
 
 ### Types 
 
 Usage of _scalar_ native PHP types (<code>int</code>, <code>float</code>, <code>bool, </code>, <code>string</code>) and _compound_ types like lists (array *indexed per <code>int</code>*) or hash maps
-(*array keyed per <code>string</code>*) are wrapped by classes in the sub namespace <code>P7CodeBuilder\Type</code> named <code>{$Type}Class</code > -> like <code>\stdClass</code>.
+(*array keyed per <code>string</code>*) are wrapped by classes in the sub namespace <code>P7CodeBuilder\Type</code> named <code>{$Type}Class</code > -> like in<code>\stdClass</code> to avoid name conflicts with reserved keyword.
 
 <code>P7CodeBuilder\Type\ListClass</code> and <code>P7CodeBuilder\Type\HashpMap</code> implement 
 - <code>\ArrayAccess</code> interface allowing accessing properties via <code>[int] | ['string']</code>
@@ -30,6 +32,9 @@ To avoid redundancy sub namespaces have a <code>Dry</code> part containing _trai
 
 - This classes are using \DOMDocument, \DOMElement, \DOMText and \DOMNode internally
 
+## Coding styles/rules
+
+See: CODING_STYLE.md
 
 ## Appendix
 
@@ -58,5 +63,5 @@ To avoid redundancy sub namespaces have a <code>Dry</code> part containing _trai
 - Ensuring it to be shippable via <code>composer</code>
 
 
- Glück auf! 
+Nuff said & Glück auf! 
  Sven <sven@schrodt.club>

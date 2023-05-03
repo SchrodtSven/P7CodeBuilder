@@ -143,12 +143,16 @@ class Core
     // $a ??= $b $a = $a ?? $b Null Coalesce
     public const ASSIGN_OP_NULL_COALESCE = ' ??= ';
 
-    // Constants for visibilies
+    // Constants for visibilities and static
 
     public const VISI_PUB = 'public';
 
     public const VISI_PROT = 'protected';
 
     public const VISI_PRIV = 'private';
+
+    public const STATIC_KEYWORD = 'static';
+
+    public const FINAL_KEYWORD = 'final';
 
 }

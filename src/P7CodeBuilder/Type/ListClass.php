@@ -200,7 +200,18 @@ class ListClass implements \ArrayAccess, \Iterator, \Countable
         return $this;
     }
 
+    public function removeDuplicates(int $mode = \SORT_REGULAR): self
+    {
+        $this->content = \array_values(\array_unique($this->content, $mode));
+        return $this;
+    }
 
+    public function splitColumn(int|string $columnKey, int|string|null $indexKey = null): self
+    {
+        //@FIXME -> error handling
+        //);die;
+        return new self(\array_column($this->content, $columnKey, $indexKey));
+    }
 
     /**
      * Applying callback on every element

@@ -5,7 +5,6 @@ declare(strict_types=1);
  * Class for filtering operations on instances of ListClass | HashMap that 
  * have (keyed; associative; hash map) arrays as elements
  * 
- * - OOP API for array operations
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/P7CodeBuilder
@@ -56,20 +55,22 @@ class ListFilter
     public function genericTextFilter(string $value, int $mode = FilterMode::TEXT_FILTER_EQ): self
     {
         $subject = $this->subject;
-        $this->filtered = new ListClass(array_filter( 
-            $this->content->getAsArray(), 
-            function($item) use($subject, $value, $mode): bool {
-                  return match($mode) {
-                    FilterMode::TEXT_FILTER_EQ => ($item[$subject] === $value),
-                    FilterMode::TEXT_FILTER_NE => ($item[$subject] !== $value),
-                    FilterMode::TEXT_FILTER_STARTS => str_starts_with($item[$subject], $value),
-                    FilterMode::TEXT_FILTER_NOT_STARTS => !str_starts_with($item[$subject], $value),
-                    FilterMode::TEXT_FILTER_ENDS => str_ends_with($item[$subject], $value),
-                    FilterMode::TEXT_FILTER_NOT_ENDS => !str_ends_with($item[$subject], $value),
-                    FilterMode::TEXT_FILTER_CONT => str_contains($item[$subject], $value),
-                    FilterMode::TEXT_FILTER_NOT_CONT => !str_contains($item[$subject], $value),
-                  };
-             }
+        $this->filtered = new ListClass(
+                array_filter( 
+                    $this->content->getAsArray(), 
+                    function($item) use($subject, $value, $mode): bool {
+                        return match($mode) {
+                            FilterMode::TEXT_FILTER_EQ => ($item[$subject] === $value),
+                            FilterMode::TEXT_FILTER_NE => ($item[$subject] !== $value),
+                            FilterMode::TEXT_FILTER_STARTS => str_starts_with($item[$subject], $value),
+                            FilterMode::TEXT_FILTER_NOT_STARTS => !str_starts_with($item[$subject], $value),
+                            FilterMode::TEXT_FILTER_ENDS => str_ends_with($item[$subject], $value),
+                            FilterMode::TEXT_FILTER_NOT_ENDS => !str_ends_with($item[$subject], $value),
+                            FilterMode::TEXT_FILTER_CONT => str_contains($item[$subject], $value),
+                            FilterMode::TEXT_FILTER_NOT_CONT => !str_contains($item[$subject], $value),
+                            default => $value
+                        };
+                    }
         ));
         return $this;
     }
@@ -91,7 +92,7 @@ class ListFilter
     }
 
     /**
-     * Get the value of filtered
+     * Get the value of filtered list as *new* instance
      *
      * @return ListFilter
      */
