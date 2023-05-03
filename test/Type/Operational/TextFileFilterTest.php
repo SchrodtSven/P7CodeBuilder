@@ -25,7 +25,7 @@ class TextFileFilterTest extends TestCase
      */
     public function testBasix($original, $start, $length, $mid, $end ): void
     {
-
+        
         $this->assertTrue(str_starts_with($original, $start));
 
         //@FIXME repair mock data coloumn 'end' in 'data/Mocking/textFileFilter.php'

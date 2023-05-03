@@ -1,10 +1,1 @@
-'int',
-'float',
-'array',
-'string',
-'bool',
-'?int',
-'?float',
-'?array',
-'?string',
-'?bool'
+<?php

@@ -5,7 +5,9 @@ P7CodeBuilder requires PHP 8.2+
 
 ## Philosophy, Design & Architecture
 
-We *always do* use native functions/classes etc. if possible.
+We *always* use native functions/classes etc. if possible.
+
+Mock data stores (json,xml, php ... whatsoever) will be minified and non human friendly readable
 
 ### Types 
 
