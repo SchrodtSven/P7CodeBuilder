@@ -1,13 +1,14 @@
 # P7CodeBuilder
 Library for dynamic creation of source code (files, parts, projects) in several languages (PHP, XML, HTML, rust, Java, Javascript, SQL ...)
 P7CodeBuilder requires PHP 8.2+
-
+Version 0.1 - in development -
 
 ## Philosophy, Design & Architecture
 
 We *always* use native functions/classes etc. if possible.
 
-Mock data stores (json,xml, php ... whatsoever) will be minified and non human friendly readable
+Mock data stores (json,xml, php ... whatsoever) will be minified - a well documented and commented API will
+be implemented to use this data (via dat providers, data suppliers, container classes ... )
 
 ### Types 
 
