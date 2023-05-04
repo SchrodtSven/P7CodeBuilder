@@ -22,6 +22,11 @@ class FooTest extends TestCase
     
     public function testBasix(): void
     {
+
+        
+
+
+
         $this->assertSame(2, 1+1);
     }
 

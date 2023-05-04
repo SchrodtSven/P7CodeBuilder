@@ -3,11 +3,10 @@
      * {{DOC}}
      *
      * {{PARAM}}
-     * @return {{RETURN}}
+     * @return {{RTYPE}}
      */
 
-
-     {{VISI}} function {{FUNCNAME}}({{SIG}}): {{RTYPE}}
+     {{VISI}} function {{FUNC_NAME}}({{SIG}}): {{RTYPE}}
      {
         {{CODE}}
         return {{RVALUE}};

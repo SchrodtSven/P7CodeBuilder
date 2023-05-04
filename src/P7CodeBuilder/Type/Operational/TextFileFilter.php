@@ -169,9 +169,8 @@ class TextFileFilter
       */
     public function genericTextFilter(string $value, int $mode = FilterMode::TEXT_FILTER_EQ): self
     {
-
-        
         $this->filtered = new ListClass(
+            \array_values(  // we want a list(indexed: [0], [1], ... [n]), so we export the values 
                 array_filter( 
                     $this->content->getAsArray(), 
                     function($item) use($value, $mode): bool {
@@ -188,7 +187,9 @@ class TextFileFilter
                             default => $value
                         };
                     }
-        ));
+                )
+            )
+        );
         return $this;
     }
     

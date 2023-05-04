@@ -1,6 +1,6 @@
 <?php
 /**
- * Providing formatting functions
+ * Providing formating functions
  * 
  * @author Sven Schrodt<sven@schrodt.club>
  * @link https://github.com/SchrodtSven/P7CodeBuilder
@@ -8,8 +8,6 @@
  * @version 0.1
  * @since 2023-05-02
  */
-
-
 
 namespace P7CodeBuilder\Language\Dry;
 use P7CodeBuilder\Type\StringClass;

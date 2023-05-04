@@ -37,17 +37,29 @@ class SnippetFactory
     public function getAssignmentFromList(ListClass $data, string $varName, string $visibility = Core::VISI_PRIV, string $doc =''): StringClass
     {   
         $this->parser = new SimpleParser(Config::TPL_DIR . Config::ARRAY_DECL);
-
         $this->parser->VISI = $visibility;
         $this->parser->VAR_NAME = $varName;
         $this->parser->DOC = $doc;
         
         $data = new StringClass(wordwrap((string) $data->join(', '), $this->cfg->maxLengthMultiLineAssignment));
-        
-        
-        
-
         $this->parser->DATA = (string) $this->tidy->indentLines($data, $this->cfg->indentMultiLineAssignment);
         return $this->parser->render();
+    }
+
+
+    public function getFunctionDeclaration(string $function, string $sig, string $rType, string $rValue, string $doc,
+                                          string $code = '', string $visibility = Core::VISI_PRIV, string $param = ''
+                                          ): StringClass
+    {
+        $parser = new SimpleParser(Config::TPL_DIR . Config::FUNC_DECL);
+        $parser->FUNC_NAME = $function;
+        $parser->SIG = $sig;
+        $parser->RVALUE = $rValue;
+        $parser->RTYPE = $rType;
+        $parser->DOC = $doc;
+        $parser->CODE = $code;
+        $parser->VISI = $visibility;
+        $parser->PARAM = $param;
+        return $parser->render();
     }
 }
